@@ -18,11 +18,16 @@ int main() {
       output.push_back(input[input.size() - 2]);
       output.push_back(input[input.size() - 1]);
 
-      sort(output.begin(), output.end());
+      if (output[0] == output[1]) {
+        cout << "Numbers are equal\n";
+      } 
+      else {
+        sort(output.begin(), output.end());
 
-      cout << "Max: " << output[1] << " ";
-      cout << "Min: " << output[0] << " ";
-      cout << "\n";
+        cout << "Max: " << output[1] << " ";
+        cout << "Min: " << output[0] << " ";
+        cout << "\n";
+      }
     }
   }
 }
