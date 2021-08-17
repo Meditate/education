@@ -21,6 +21,9 @@ int main() {
       if (output[0] == output[1]) {
         cout << "Numbers are equal\n";
       } 
+      else if ((output[1] - output[0]) <= 0.09 ) {
+        cout << "Numbers are almost equal\n";
+      }
       else {
         sort(output.begin(), output.end());
 
