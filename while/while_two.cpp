@@ -6,14 +6,14 @@
 using namespace std;
 
 int main() {
-  vector<int> input;
+  vector<double> input;
   string temp;
  
   while(cin >> temp && temp != "|") {
-    input.push_back(stoi(temp));
+    input.push_back(stod(temp));
 
     if(input.size() != 0 && input.size() % 2 == 0) {
-      vector<int> output;
+      vector<double> output;
 
       output.push_back(input[input.size() - 2]);
       output.push_back(input[input.size() - 1]);
