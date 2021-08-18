@@ -29,34 +29,62 @@ double numbersFromString(string str) {
   return stod(clean_string);
 }
 
+double converToCmFrom(double value, string from) {
+  double output = value;
+
+  if( from == "cm" ) {}
+  else if(from == "in") {
+    output *= 2.54;
+  }
+  else if(from == "ft") {
+    output *= 12;
+    output *= 2.54;
+  }
+  else if(from == "m") {
+    output *= 100;
+  }
+  else {
+    cout << "ERROR in measurement system";
+  }
+
+  return output;
+}
+
+double convertFromCmTo(double value, string to) {
+  double output = value;
+
+  if( to == "cm" ) {}
+  else if(to == "in") {
+    output /= 2.54;
+  }
+  else if(to == "ft") {
+    output /= 12;
+    output /= 2.54;
+  }
+  else if(to == "m") {
+    output /= 100;
+  }
+  else {
+    cout << "ERROR in measurement system";
+  }
+
+  return output;
+}
+
 int main() {
   vector<double> input;
 
   double current_max = 0.0;
   double current_min = 0.0;
+  double sum = 0.0;
 
   string temp;
 
   while(cin >> temp && temp != "|") {
     string measurement = symbolsFromString(temp);
-    double input_value = numbersFromString(temp);
+    double input_value = converToCmFrom(numbersFromString(temp), measurement);
 
-    if( measurement == "cm" ) {}
-    else if(measurement == "in") {
-      input_value *= 2.54;
-    }
-    else if(measurement == "ft") {
-      input_value *= 12;
-      input_value *= 2.54;
-    }
-    else if(measurement == "m") {
-      input_value *= 100;
-    }
-    else {
-      cout << "ERROR in measurement system";
-      break;
-    }
-
+    sum += input_value;
     input.push_back(input_value);
 
     if (input_value > current_max) {
@@ -69,8 +97,6 @@ int main() {
 
       cout << "Smallest number \n";
     }
-
-    cout << input_value << "\n";
 
     if(input.size() != 0 && input.size() % 2 == 0) {
       vector<double> output;
@@ -90,9 +116,11 @@ int main() {
         sort(output.begin(), output.end());
 
         cout << "Max: " << output[1] << " ";
-        cout << "Min: " << output[0] << " ";
-        cout << "\n";
+        cout << "Min: " << output[0] << " \n";
       }
+
+      cout << "Size: " << input.size() << " ";
+      cout << "Sum: " << convertFromCmTo(sum, "m") << " \n";
     }
   }
 }
