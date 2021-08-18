@@ -115,15 +115,19 @@ int main() {
       else {
         sort(output.begin(), output.end());
 
-        cout << "Max: " << output[1] << " ";
-        cout << "Min: " << output[0] << " \n";
+        cout << "Max: " << output[1] << "cm ";
+        cout << "Min: " << output[0] << "cm \n";
       }
 
       cout << "Size: " << input.size() << " ";
-      cout << "Sum: " << convertFromCmTo(sum, "m") << " \n";
+      cout << "Sum: " << convertFromCmTo(sum, "m") << "m \n";
       
       cout << "Array: ";
+
+      sort(input.begin(), input.end());
+
       for(int x : input) { cout  << convertFromCmTo(x, "m") << "m "; }
+
       cout << "\n";
     }
   }
