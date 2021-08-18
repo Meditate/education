@@ -121,6 +121,10 @@ int main() {
 
       cout << "Size: " << input.size() << " ";
       cout << "Sum: " << convertFromCmTo(sum, "m") << " \n";
+      
+      cout << "Array: ";
+      for(int x : input) { cout  << convertFromCmTo(x, "m") << "m "; }
+      cout << "\n";
     }
   }
 }
