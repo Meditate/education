@@ -9,7 +9,7 @@ string symbolsFromString(string str) {
   string clean_string = "";
 
   for (int i = 0; i < str.length(); i++) {
-    if (!isdigit(str[i])) {
+    if (!isdigit(str[i]) && str[i] != '.') {
       clean_string += str[i];
     }
   }
@@ -21,7 +21,7 @@ double numbersFromString(string str) {
   string clean_string = "";
 
   for (int i = 0; i < str.length(); i++) {
-    if (isdigit(str[i])) {
+    if (isdigit(str[i]) || str[i] == '.') {
       clean_string += str[i];
     }
   }
@@ -54,6 +54,7 @@ int main() {
     }
     else {
       cout << "ERROR in measurement system";
+      break;
     }
 
     input.push_back(input_value);
@@ -69,7 +70,7 @@ int main() {
       cout << "Smallest number \n";
     }
 
-    cout << temp << "\n";
+    cout << input_value << "\n";
 
     if(input.size() != 0 && input.size() % 2 == 0) {
       vector<double> output;
@@ -77,10 +78,12 @@ int main() {
       output.push_back(input[input.size() - 2]);
       output.push_back(input[input.size() - 1]);
 
+      sort(output.begin(), output.end());
+
       if (output[0] == output[1]) {
         cout << "Numbers are equal\n";
       } 
-      else if ((output[1] - output[0]) <= 0.09 ) {
+      else if ((output[1] - output[0]) <= 0.9 ) {
         cout << "Numbers are almost equal\n";
       }
       else {
