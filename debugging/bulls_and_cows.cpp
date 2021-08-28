@@ -95,12 +95,14 @@ int main() {
   int numbers_at_correct_positions;
   int numbers_at_incorrect_positions;
 
-  srand (time(NULL)); // random seed based on time
+  while(true) {
+    srand (time(NULL)); // random seed based on time
 
-  initial_vector = generate_initial_vector();
-  user_vector = read_number_from_user();
-  numbers_at_correct_positions = correct_numbers_at_correct_positions(initial_vector, user_vector);
-  numbers_at_incorrect_positions = correct_numbers_at_incorrect_positions(initial_vector, user_vector);
+    initial_vector = generate_initial_vector();
+    user_vector = read_number_from_user();
+    numbers_at_correct_positions = correct_numbers_at_correct_positions(initial_vector, user_vector);
+    numbers_at_incorrect_positions = correct_numbers_at_incorrect_positions(initial_vector, user_vector);
 
-  print_result(initial_vector, user_vector, numbers_at_correct_positions, numbers_at_incorrect_positions);
+    print_result(initial_vector, user_vector, numbers_at_correct_positions, numbers_at_incorrect_positions);
+  }
 }
