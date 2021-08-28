@@ -7,6 +7,7 @@ using namespace std;
 
 class Bad_size_input {};
 class Size_bigger_than_input {};
+class Sum_out_of_int {};
 
 int read_size_from_user() {
   int size;
@@ -29,10 +30,10 @@ vector<int> read_input_from_user() {
 
   cout << "Enter values or | to end the input \n";
  
-  char tmp;
+  string tmp;
 
-  while ( cin >> tmp && tmp != '|') {
-    input.push_back(int(tmp) - 48);
+  while ( cin >> tmp && tmp != "|") {
+    input.push_back(stoi(tmp));
   }
 
   return input;
@@ -48,6 +49,12 @@ int calculate_input_of_size(vector<int> input, int size) {
   }
 
   for ( int i = 0; i < size; i++) {
+    if ((2147483647 - input[i]) < sum) {
+      cerr << "Sum cannot be stored in INT type\n";
+
+      throw Sum_out_of_int{};
+    }
+
     sum += input[i];
   }
 
@@ -68,6 +75,9 @@ int main() {
     return 1;
   }
   catch (Size_bigger_than_input) {
+    return 1;
+  }
+  catch (Sum_out_of_int) {
     return 1;
   }
 
